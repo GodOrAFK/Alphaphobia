@@ -11,10 +11,14 @@ public class BattleManager : MonoBehaviour
 
     public Text PlayerHealth;
     public Text EnemyHealth;
+    //public Text PlayerAttackChoices;
+    public Button PlayerAttackOne, PlayerAttackTwo, PlayerAttackThree, PlayerAttackFour;
+    
+    public Text PlayerAttackOneName, PlayerAttackTwoName, PlayerAttackThreeName, PlayerAttackFourName;
 
     private readonly System.Random random = new System.Random();
-    private int playerAttack = 0;
-    // Start is called before the first frame update
+    private int playerAttack = -1;
+    
     void Start()
     {
         Debug.Log("Creating Monsters");
@@ -81,11 +85,25 @@ public class BattleManager : MonoBehaviour
             attackName = "NuclearFuckingExplosion",
             damage = 80
         };
-        Debug.Log("Created Monsters");
 
+        PlayerAttackOne.onClick.AddListener(OnFirstButtonClick);
+        PlayerAttackTwo.onClick.AddListener(OnSecondButtonClick);
+        PlayerAttackThree.onClick.AddListener(OnThirdButtonClick);
+        PlayerAttackFour.onClick.AddListener(OnFourthButtonClick);
+
+        Debug.Log("Created Monsters");
+        WriteAttacks();
         WriteHealth();
 
         StartCoroutine(Fight());
+    }
+
+    void WriteAttacks()
+    {
+        PlayerAttackOneName.text = playerMonster.attacks[0].attackName;
+        PlayerAttackTwoName.text = playerMonster.attacks[1].attackName;
+        PlayerAttackThreeName.text = playerMonster.attacks[2].attackName;
+        PlayerAttackFourName.text = playerMonster.attacks[3].attackName;
     }
 
     void WriteHealth()
@@ -93,15 +111,37 @@ public class BattleManager : MonoBehaviour
         PlayerHealth.text = $"Player: {playerMonster.health} / {playerMonster.maxHealth}";
         EnemyHealth.text = $"Enemy: {enemyMonster.health} / {playerMonster.maxHealth}";
     }
+    
+    void OnFirstButtonClick()
+    {
+        playerAttack = 0;
+    }
+
+    void OnSecondButtonClick()
+    {
+        playerAttack = 1;
+    }
+
+    void OnThirdButtonClick()
+    {
+        playerAttack = 2;
+    }
+
+    void OnFourthButtonClick()
+    {
+        playerAttack = 3;
+    }
+
 
     IEnumerator PlayerAttack()
     {
         Debug.Log("Player Attacking");
         if (playerMonster.health > 0 && enemyMonster.health > 0)
         {
-            yield return StartCoroutine(waitForKeyPress());
+            yield return StartCoroutine(waitForButtonPress());
             enemyMonster.defending(playerMonster.attacking(playerAttack));
         }
+        playerAttack = -1;
     }
 
     void EnemyAttack()
@@ -167,32 +207,36 @@ public class BattleManager : MonoBehaviour
     {
     }
 
-    private IEnumerator waitForKeyPress()
+    private IEnumerator waitForButtonPress()
     {
         Debug.Log("Waiting for player input");
         bool done = false;
         while (!done)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (playerAttack != -1)
             {
-                playerAttack = 0;
-                done = true; // breaks the loop
+                done = true;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                playerAttack = 1;
-                done = true; // breaks the loop
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                playerAttack = 2;
-                done = true; // breaks the loop
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                playerAttack = 3;
-                done = true; // breaks the loop
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //{
+            //    playerAttack = 0;
+            //    done = true; // breaks the loop
+            //}
+            //else if (Input.GetKeyDown(KeyCode.Alpha2))
+            //{
+            //    playerAttack = 1;
+            //    done = true; // breaks the loop
+            //}
+            //else if (Input.GetKeyDown(KeyCode.Alpha3))
+            //{
+            //    playerAttack = 2;
+            //    done = true; // breaks the loop
+            //}
+            //else if (Input.GetKeyDown(KeyCode.Alpha4))
+            //{
+            //    playerAttack = 3;
+            //    done = true; // breaks the loop
+            //}
 
             yield return null;
         }
