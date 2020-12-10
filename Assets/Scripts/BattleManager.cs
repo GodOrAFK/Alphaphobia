@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
     public Button PlayerAttackOne, PlayerAttackTwo, PlayerAttackThree, PlayerAttackFour;
     public Text PlayerAttackOneName, PlayerAttackTwoName, PlayerAttackThreeName, PlayerAttackFourName;
     public HealthBar PlayerHealthBar;
+    public HealthBar EnemyHealthBar;
 
     private readonly System.Random random = new System.Random();
     private int playerAttack = -1;
@@ -97,6 +98,8 @@ public class BattleManager : MonoBehaviour
             attackType = "Normal"
         };
 
+        EnemyHealthBar.SetMaxHealth(enemyMonster.maxHealth);
+
         PlayerAttackOne.onClick.AddListener(OnFirstButtonClick);
         PlayerAttackTwo.onClick.AddListener(OnSecondButtonClick);
         PlayerAttackThree.onClick.AddListener(OnThirdButtonClick);
@@ -119,12 +122,13 @@ public class BattleManager : MonoBehaviour
 
     private string WriteAttackText(Attacks attack)
     {
-        return $"{attack.attackName} ({attack.damage}) {attack.attackType}";
+        return $"{attack.attackName} ({attack.damage})\n{attack.attackType}";
     }
 
     void WriteHealth()
     {
         PlayerHealthBar.SetHealth(playerMonster.health);
+        EnemyHealthBar.SetHealth(enemyMonster.health);
         PlayerHealth.text = $"{playerMonster.monsterName} {(int)(playerMonster.health)} / {(int)(playerMonster.maxHealth)}";
         EnemyHealth.text = $"{enemyMonster.monsterName} {(int)(enemyMonster.health)} / {(int)(enemyMonster.maxHealth)}";
     }
