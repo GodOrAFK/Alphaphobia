@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 426629822}
   - component: {fileID: 426629824}
   - component: {fileID: 426629823}
+  - component: {fileID: 426629825}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -318,6 +319,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426629821}
   m_CullTransparentMesh: 0
+--- !u!95 &426629825
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426629821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb60d2f18da152445a351c4ee0e12af7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &469686565
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +879,7 @@ GameObject:
   - component: {fileID: 841734072}
   - component: {fileID: 841734074}
   - component: {fileID: 841734073}
+  - component: {fileID: 841734075}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -923,6 +944,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841734071}
   m_CullTransparentMesh: 0
+--- !u!95 &841734075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841734071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb60d2f18da152445a351c4ee0e12af7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &961175811
 GameObject:
   m_ObjectHideFlags: 0
