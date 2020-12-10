@@ -6,6 +6,7 @@ public class Attacks
 {
     public int damage { get; set; }
     public string attackName { get; set; }
+    public string attackType { get; set; }
     // Start is called before the first frame update
     void Start()
     {

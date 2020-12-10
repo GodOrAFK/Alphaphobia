@@ -11,10 +11,9 @@ public class BattleManager : MonoBehaviour
 
     public Text PlayerHealth;
     public Text EnemyHealth;
-    //public Text PlayerAttackChoices;
     public Button PlayerAttackOne, PlayerAttackTwo, PlayerAttackThree, PlayerAttackFour;
-    
     public Text PlayerAttackOneName, PlayerAttackTwoName, PlayerAttackThreeName, PlayerAttackFourName;
+    public HealthBar PlayerHealthBar;
 
     private readonly System.Random random = new System.Random();
     private int playerAttack = -1;
@@ -31,28 +30,35 @@ public class BattleManager : MonoBehaviour
             strength = 10,
             speed = 10,
             defense = 12,
-            attacks = new Attacks[4]
+            attacks = new Attacks[4],
+            monsterType = "Water"
         };
         playerMonster.attacks[0] = new Attacks 
         {
             attackName = "Watergun",
-            damage = 20
+            damage = 20,
+            attackType = "Water"
         };
         playerMonster.attacks[1] = new Attacks
         {
             attackName = "Squirt",
-            damage = 40
+            damage = 40,
+            attackType = "Water"
         }; 
         playerMonster.attacks[2] = new Attacks
         {
             attackName = "Hydropump",
-            damage = 60
+            damage = 60,
+            attackType = "Water"
         }; 
         playerMonster.attacks[3] = new Attacks
         {
-            attackName = "Tsunamy",
-            damage = 80
+            attackName = "Tackle",
+            damage = 20,
+            attackType = "Normal"
         };
+
+        PlayerHealthBar.SetMaxHealth(playerMonster.maxHealth);
 
         enemyMonster = new Monster()
         {
@@ -63,27 +69,32 @@ public class BattleManager : MonoBehaviour
             strength = 12,
             speed = 10,
             defense = 10,
-            attacks = new Attacks[4]
+            attacks = new Attacks[4],
+            monsterType = "Fire"
         };
         enemyMonster.attacks[0] = new Attacks
         {
             attackName = "Ember",
-            damage = 20
+            damage = 20,
+            attackType = "Fire"
         };
         enemyMonster.attacks[1] = new Attacks
         {
             attackName = "Fireball",
-            damage = 40
+            damage = 40,
+            attackType = "Fire"
         };
         enemyMonster.attacks[2] = new Attacks
         {
             attackName = "Flamethrower",
-            damage = 60
+            damage = 60,
+            attackType = "Fire"
         };
         enemyMonster.attacks[3] = new Attacks
         {
-            attackName = "NuclearFuckingExplosion",
-            damage = 80
+            attackName = "Scratch",
+            damage = 20,
+            attackType = "Normal"
         };
 
         PlayerAttackOne.onClick.AddListener(OnFirstButtonClick);
@@ -100,16 +111,22 @@ public class BattleManager : MonoBehaviour
 
     void WriteAttacks()
     {
-        PlayerAttackOneName.text = playerMonster.attacks[0].attackName;
-        PlayerAttackTwoName.text = playerMonster.attacks[1].attackName;
-        PlayerAttackThreeName.text = playerMonster.attacks[2].attackName;
-        PlayerAttackFourName.text = playerMonster.attacks[3].attackName;
+        PlayerAttackOneName.text = WriteAttackText(playerMonster.attacks[0]);
+        PlayerAttackTwoName.text = WriteAttackText(playerMonster.attacks[1]);
+        PlayerAttackThreeName.text = WriteAttackText(playerMonster.attacks[2]);
+        PlayerAttackFourName.text = WriteAttackText(playerMonster.attacks[3]);
+    }
+
+    private string WriteAttackText(Attacks attack)
+    {
+        return $"{attack.attackName} ({attack.damage}) {attack.attackType}";
     }
 
     void WriteHealth()
     {
-        PlayerHealth.text = $"Player: {playerMonster.health} / {playerMonster.maxHealth}";
-        EnemyHealth.text = $"Enemy: {enemyMonster.health} / {playerMonster.maxHealth}";
+        PlayerHealthBar.SetHealth(playerMonster.health);
+        PlayerHealth.text = $"{playerMonster.monsterName} {(int)(playerMonster.health)} / {(int)(playerMonster.maxHealth)}";
+        EnemyHealth.text = $"{enemyMonster.monsterName} {(int)(enemyMonster.health)} / {(int)(enemyMonster.maxHealth)}";
     }
     
     void OnFirstButtonClick()
@@ -217,26 +234,6 @@ public class BattleManager : MonoBehaviour
             {
                 done = true;
             }
-            //if (Input.GetKeyDown(KeyCode.Alpha1))
-            //{
-            //    playerAttack = 0;
-            //    done = true; // breaks the loop
-            //}
-            //else if (Input.GetKeyDown(KeyCode.Alpha2))
-            //{
-            //    playerAttack = 1;
-            //    done = true; // breaks the loop
-            //}
-            //else if (Input.GetKeyDown(KeyCode.Alpha3))
-            //{
-            //    playerAttack = 2;
-            //    done = true; // breaks the loop
-            //}
-            //else if (Input.GetKeyDown(KeyCode.Alpha4))
-            //{
-            //    playerAttack = 3;
-            //    done = true; // breaks the loop
-            //}
 
             yield return null;
         }
