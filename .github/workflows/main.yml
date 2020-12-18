@@ -17,7 +17,7 @@ jobs:
         unityVersion:
           - 2019.3.14f1
         targetPlatform:
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneWindows # Build a Windows standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
     steps:
       - uses: actions/checkout@v2
