@@ -12,27 +12,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        projectPath:
-          - Alphaphobia
         unityVersion:
           - 2019.3.14f1
         targetPlatform:
-          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-${{ matrix.projectPath }}-
-            Library-
       - uses: webbertakken/unity-builder@v0.10
         with:
-          projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v1
