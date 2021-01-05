@@ -35,14 +35,7 @@ public class MenuController : MonoBehaviour
 
     public void Exit()
     {
-        if (Debug.isDebugBuild)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            Application.Quit();
-        }
+        Application.Quit();
     }
 
     public void ToggleSettings(bool open)
