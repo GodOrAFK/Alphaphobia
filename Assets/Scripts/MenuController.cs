@@ -5,28 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject SoundController;
-
     [Header("Sub-Menus")]
     public GameObject MainMenu;
     public GameObject SettingMenu;
-
-    private void Awake()
-    {
-        if (SoundController != null) { DontDestroyOnLoad(SoundController); }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void StartGame()
     {
