@@ -17,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References:")]
     public Rigidbody2D rb;
+    private AudioSource _audio;
     private Animator _anim;
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        _audio = GetComponent<AudioSource>();
         if(_anim == null) { Debug.LogError("Animator is missing!"); }
     }
 
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         ProcessInputs();
         Move();
         Animate();
+        PlaySound();
     }
 
     private void Move()
@@ -54,5 +57,18 @@ public class PlayerMovement : MonoBehaviour
             _anim.SetFloat("Vertical", movementDirection.y);
         }
         _anim.SetFloat("Speed", movementSpeed);
+    }
+
+    private void PlaySound()
+    {
+        if(_audio == null) { return; }
+        if (rb.velocity == Vector2.zero)
+        {
+            if (_audio.isPlaying) { _audio.Stop(); }
+        }
+        else
+        {
+            if (!_audio.isPlaying) { _audio.Play(); }
+        }
     }
 }
