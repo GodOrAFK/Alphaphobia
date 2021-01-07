@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("World");
+        SceneManager.LoadScene("World_Tilemap");
     }
 
     public void Exit()
