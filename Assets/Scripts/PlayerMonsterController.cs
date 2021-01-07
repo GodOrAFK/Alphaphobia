@@ -17,14 +17,11 @@ public class PlayerMonsterController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void HealAll()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach(Monster monster in PlayerMonster)
+        {
+            monster.health = monster.maxHealth;
+        }
     }
 }
