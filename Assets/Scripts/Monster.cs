@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Monster
 {
     public Attacks[] attacks;
-    public string monsterName { get; set; }
-    public int level { get; set; }
-    public int exp { get; set; }
-    public int maxHealth { get; set; }
-    public double health { get; set; }
-    public int strength { get; set; }
-    public int defense { get; set; }
-    public int speed { get; set; }
-    public string monsterType { get; set; }
+    public string monsterName;
+    public int level;
+    public int exp;
+    public int maxHealth;
+    public double health;
+    public int strength;
+    public int defense;
+    public int speed;
+    public string monsterType;
 
     public double attacking(int attackNumber)
     {
