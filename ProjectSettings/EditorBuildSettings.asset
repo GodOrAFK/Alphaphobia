@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 008962bf993d7d141abab08c36be5435
   - enabled: 1
-    path: Assets/Scenes/World.unity
+    path: Assets/Scenes/World_Tilemap.unity
     guid: 3ac5c6be7788804409d0e47217860267
   - enabled: 1
     path: Assets/Scenes/Combat.unity
