@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -18,47 +19,22 @@ public class BattleManager : MonoBehaviour
 
     private readonly System.Random random = new System.Random();
     private int playerAttack = -1;
-    
+
+
+    private PlayerMonsterController _playerMonsterScript;
+
     void Start()
     {
-        Debug.Log("Creating Monsters");
-        playerMonster = new Monster()
-        {
-            monsterName = "Schiggy",
-            maxHealth = 25,
-            health = 25,
-            level = 5,
-            strength = 10,
-            speed = 10,
-            defense = 12,
-            attacks = new Attacks[4],
-            monsterType = "Water"
-        };
-        playerMonster.attacks[0] = new Attacks 
-        {
-            attackName = "Watergun",
-            damage = 20,
-            attackType = "Water"
-        };
-        playerMonster.attacks[1] = new Attacks
-        {
-            attackName = "Squirt",
-            damage = 40,
-            attackType = "Water"
-        }; 
-        playerMonster.attacks[2] = new Attacks
-        {
-            attackName = "Hydropump",
-            damage = 60,
-            attackType = "Water"
-        }; 
-        playerMonster.attacks[3] = new Attacks
-        {
-            attackName = "Tackle",
-            damage = 20,
-            attackType = "Normal"
-        };
+        GameObject playerMonsterController = GameObject.FindGameObjectWithTag("PlayerMonsterController");
 
+        if(playerMonsterController == null) { Debug.LogError("PlayerMonsterController MISSING"); }
+
+        _playerMonsterScript = playerMonsterController.GetComponent<PlayerMonsterController>();
+
+        playerMonster = _playerMonsterScript.PlayerMonster[0];
+
+        Debug.Log("Creating Monsters");
+        
         PlayerHealthBar.SetMaxHealth(playerMonster.maxHealth);
 
         enemyMonster = new Monster()
@@ -115,9 +91,9 @@ public class BattleManager : MonoBehaviour
     void WriteAttacks()
     {
         PlayerAttackOneName.text = WriteAttackText(playerMonster.attacks[0]);
-        PlayerAttackTwoName.text = WriteAttackText(playerMonster.attacks[1]);
-        PlayerAttackThreeName.text = WriteAttackText(playerMonster.attacks[2]);
-        PlayerAttackFourName.text = WriteAttackText(playerMonster.attacks[3]);
+        //PlayerAttackTwoName.text = WriteAttackText(playerMonster.attacks[1]);
+        //PlayerAttackThreeName.text = WriteAttackText(playerMonster.attacks[2]);
+        //PlayerAttackFourName.text = WriteAttackText(playerMonster.attacks[3]);
     }
 
     private string WriteAttackText(Attacks attack)
@@ -211,11 +187,15 @@ public class BattleManager : MonoBehaviour
         {
             enemyMonster.health = 0;
             Debug.Log("Player Monster Wins!");
+
+            SceneManager.LoadScene("World_Tilemap");
         }
         else
         {
             playerMonster.health = 0;
             Debug.Log("Enemy Monster Wins!");
+
+            SceneManager.LoadScene("World_Tilemap");
         }
         yield return null;
 

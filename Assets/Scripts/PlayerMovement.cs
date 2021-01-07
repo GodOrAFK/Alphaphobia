@@ -19,6 +19,15 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private AudioSource _audio;
     private Animator _anim;
+
+    private void Awake()
+    {
+        float posX = PlayerPrefs.GetFloat("posX", 0);
+        float posY = PlayerPrefs.GetFloat("posY", 0);
+
+        this.transform.position = new Vector2(posX, posY);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

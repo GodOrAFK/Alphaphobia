@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Attacks
 {
-    public int damage { get; set; }
-    public string attackName { get; set; }
-    public string attackType { get; set; }
+    public int damage;
+    public string attackName;
+    public string attackType;
     // Start is called before the first frame update
     void Start()
     {
