@@ -70,8 +70,11 @@ Es gibt viele turn based RPG Games auf GitHub, jedoch keines welches von uns ent
 
 ### Installation
 
-1. Spiel herunterladen [Game Download](https://developer.cloud.unity3d.com/share/share.html?shareId=-k7UmoJX5L)
-2. ZIP Ordner entippen.
+1. Spiel herunterladen
+- [Game Download by Unity](https://developer.cloud.unity3d.com/share/share.html?shareId=-k7UmoJX5L)
+- [Game Download by github](https://github.com/GodOrAFK/Alphaphobia/releases)
+
+2. Ordner entzippen.
 3. Starten der .exe
 
 <!-- ROADMAP -->
