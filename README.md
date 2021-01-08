@@ -68,11 +68,11 @@ Es gibt viele turn based RPG Games auf GitHub, jedoch keines welches von uns ent
 ### Prerequisites
 
 * [Windows 10](https://www.microsoft.com/de-de/software-download/windows10)
-* [Game Download] (Http://empty.com)
+* [Game Download](https://developer.cloud.unity3d.com/share/share.html?shareId=-k7UmoJX5L)
 
 ### Installation
 
-1. Spiel herunterladen [Alphaphobia/Release](https://github.com/GodOrAFK/Alphaphobia/releases)
+1. Spiel herunterladen [Game Download](https://developer.cloud.unity3d.com/share/share.html?shareId=-k7UmoJX5L)
 2. ZIP Ordner entippen.
 3. Starten der .exe
 
