@@ -51,8 +51,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Es gibt viele turn based RPG Games auf GitHub, jedoch keines welches von uns entwickelt wurde. Also haben wir eins gemacht. :)
 
 ### Built With
