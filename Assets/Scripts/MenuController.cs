@@ -11,11 +11,6 @@ public class MenuController : MonoBehaviour
     public GameObject MainMenu;
     public GameObject SettingMenu;
 
-    private void Awake()
-    {
-        if (SoundController != null) { DontDestroyOnLoad(SoundController); }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
